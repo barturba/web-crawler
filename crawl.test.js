@@ -43,3 +43,17 @@ test("getURLsFromHTML", () => {
 
   expect(got).toStrictEqual(want);
 });
+
+test("getURLsFromHTML multiple levels", () => {
+  const got = getURLsFromHTML(
+    '<html><body><p><p><a href="top.html">top</a></p></p><a href="test.html"><span>Go to Boot.dev</span></a><a href="learn.html">Learn Backend Development</a></body></html>',
+    "https://sub.example.com/"
+  );
+  const want = [
+    "https://sub.example.com/top.html",
+    "https://sub.example.com/test.html",
+    "https://sub.example.com/learn.html",
+  ];
+
+  expect(got).toStrictEqual(want);
+});

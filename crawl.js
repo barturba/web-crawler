@@ -83,4 +83,12 @@ async function fetchURL(url) {
   }
 }
 
-export { normalizeURL, getURLsFromHTML, crawlPage };
+function printReport(pages) {
+  console.log(`printReport()`);
+
+  for (let [key, value] of Object.entries(pages)) {
+    console.log(`Found ${value} internal links to ${key}`);
+  }
+}
+
+export { normalizeURL, getURLsFromHTML, crawlPage, printReport };

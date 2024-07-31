@@ -1,5 +1,5 @@
 import { argv, exit } from "node:process";
-import { crawlPage } from "./crawl.js";
+import { crawlPage, printReport } from "./crawl.js";
 
 async function main() {
   if (argv.length < 3) {
@@ -14,7 +14,7 @@ async function main() {
   console.log(`starting at base URL: ${baseURL}`);
   try {
     var pages = await crawlPage(baseURL);
-    console.log(JSON.stringify(pages, 0, 2));
+    printReport(pages);
   } catch (error) {
     console.error(error.message);
     exit();
